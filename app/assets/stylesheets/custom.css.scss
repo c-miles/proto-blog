@@ -22,7 +22,7 @@
 }
 
 .jumbotron {
-  background-image: asset-url('gilles-lambert-mSK5nNsAsLY-unsplash.jpg');
+  background-image: asset-url('dark_plants.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -41,4 +41,24 @@ body {
 
 #sticky-footer {
   flex-shrink: none;
+}
+
+#copy-right {
+  text-decoration: none;
+}
+
+#copy-right:hover {
+  text-decoration: underline;
+}
+
+#italic-author {
+  font-style: italic;
+}
+
+#article-title {
+  text-decoration: none;
+}
+
+#article-title:hover {
+  text-decoration: underline;
 }
