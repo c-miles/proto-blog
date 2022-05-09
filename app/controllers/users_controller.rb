@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: %i[show edit update]
 
   def show
     @articles = @user.articles.paginate(page: params[:page], per_page: 5)
@@ -15,8 +15,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
@@ -47,5 +46,4 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-
 end
