@@ -3,7 +3,6 @@
 require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
-
   def setup
     @category = Category.new(name: 'Sports')
   end
@@ -23,14 +22,13 @@ class CategoryTest < ActiveSupport::TestCase
     assert_not @category2.valid?
   end
 
-  test 'name should not be too long' do 
+  test 'name should not be too long' do
     @category.name = 'z' * 26
     assert_not @category.valid?
   end
 
-  test 'name should not be too short' do 
+  test 'name should not be too short' do
     @category.name = 'zz'
     assert_not @category.valid?
   end
-
 end
