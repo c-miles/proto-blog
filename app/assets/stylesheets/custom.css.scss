@@ -77,3 +77,10 @@ body {
   .flickr_pagination .next_page {
     margin-left: 1em; } 
 
+  @media (max-width:767px){
+    .mobile  {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
