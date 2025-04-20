@@ -99,15 +99,23 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              ENV.fetch("SMTP_ADDRESS"),
-    port:                 ENV.fetch("SMTP_PORT", 587),
-    user_name:            ENV['SMTP_USER'],
-    password:             ENV['SMTP_PASS'],
-    authentication:       'login',
-    enable_starttls_auto: true
-  }
+  if ENV["SMTP_ADDRESS"].present? && ENV["SMTP_USER"].present?
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              ENV["SMTP_ADDRESS"],
+      port:                 ENV.fetch("SMTP_PORT", 587),
+      user_name:            ENV["SMTP_USER"],
+      password:             ENV["SMTP_PASS"],
+      authentication:       'login',
+      enable_starttls_auto: true
+    }
+  else
+    # fall back to file if no SMTP creds
+    config.action_mailer.delivery_method = :file
+    config.action_mailer.file_settings = {
+      location: Rails.root.join("tmp/mail")
+    }
+  end
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
