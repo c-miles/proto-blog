@@ -11,6 +11,10 @@ gem 'rails', '~> 6.1.5'
 
 gem 'nio4r', '~> 2.5.9'
 
+gem 'net-smtp'   # SMTP delivery
+gem 'net-imap'   # IMAP (required by the test mailer)
+gem 'net-pop'  
+
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
